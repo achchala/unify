@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import Login from './components/Login'; 
 import Signup from './components/Signup';
 import Home from './components/Home'; 
@@ -8,10 +8,27 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    background: {
+      default: 'rgba(240, 244, 253, 1)', // Set the default background color
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Roboto', // Use Roboto font
+      'sans-serif',
+    ].join(','),
+  },
+});
 
 class App extends Component {
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <div className="App">
         <header className="App-header">
           <BrowserRouter>
@@ -24,6 +41,7 @@ class App extends Component {
           </BrowserRouter>
         </header>
       </div>
+      </ThemeProvider>
     );
   }
 }
