@@ -87,7 +87,6 @@ class Login extends Component {
               autoFocus
               value={this.state.email}
               onChange={this.handleChange}
-              placeholder="Email" required
             />
             <TextField
               margin="normal"
@@ -100,7 +99,6 @@ class Login extends Component {
               autoComplete="current-password"
               value={this.state.password}
               onChange={this.handleChange}
-              placeholder="Password" required 
             />
 
             <Button
