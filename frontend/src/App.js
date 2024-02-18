@@ -43,8 +43,8 @@ class App extends Component {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} /> 
             <Route path="/home" element={<Home />} />
-            <Route path="/request" element={<RequestBuddyPage />} />
-            <Route path="/viewmatches" element={<ViewMatches />} />
+            <Route path="/RequestBuddyPage" element={<RequestBuddyPage />} />
+            <Route path="/ViewMatches" element={<ViewMatches />} />
             </Routes>
           </BrowserRouter>
         </header>
