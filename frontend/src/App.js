@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
+import Sidebar from './components/Sidebar';
 import Login from './components/Login'; 
 import Signup from './components/Signup';
 import Home from './components/Home'; 
@@ -30,6 +31,8 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
       <div className="App">
+                  <Sidebar />
+
         <header className="App-header">
           <BrowserRouter>
             <Routes>
