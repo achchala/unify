@@ -1,55 +1,47 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import BoltIcon from '@mui/icons-material/Bolt';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { borderBottom } from '@mui/system';
-
+import logo from './logo.png';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import BrowserRouter, Routes, and Route
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   drawerPaper: {
     width: 215,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
   },
   listItemIcon: {
     marginRight: theme.spacing(1.5),
     color: '#9D9D9D',
   },
   topMargin: {
-    marginTop: theme.spacing(7)
+    marginTop: theme.spacing(2),
   },
-  spaceBetween: {
-    marginBottom: theme.spacing(1)
-  },
-  color: {
-    color: '#9D9D9D',
+  logo: {
+    width: '100%',
+    marginBottom: theme.spacing(1),
   },
   accountIcon: {
-    marginTop: 'auto',
-    marginBottom: theme.spacing(2),
-  }
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    textAlign: 'center',
+    paddingBottom: theme.spacing(2),
+  },
 }));
-
 
 export default function Sidebar() {
   const classes = useStyles();
-  const icons = [<BoltIcon />, <FavoriteIcon />]; // Define your icons here
 
   return (
-  <Drawer
-      className={classes.drawer}
+    <BrowserRouter>
+    <Drawer
       variant="permanent"
       classes={{
         paper: classes.drawerPaper,
@@ -57,20 +49,28 @@ export default function Sidebar() {
       anchor="left"
       open={true}
     >
-      <div className={classes.toolbar} />
-      <div className={classes.topMargin}/>
+      <div className={classes.topMargin} />
       <List>
-        {['Request', 'Matches'].map((text, index) => (
-          <ListItem button key={text} className={classes.spaceBetween}>
-          {React.cloneElement(icons[index], { className: classes.listItemIcon })}
-          <ListItemText primary={text} primaryTypographyProps={{ style: { color: '#9D9D9D' } }} />
-          </ListItem>
-        ))}
+        {/* Logo linking to home */}
+        <ListItem button component={Link} to="/">
+          <img src={logo} alt="Logo" className={classes.logo} />
+        </ListItem>
+        {/* Request */}
+        <ListItem button component={Link} to="/RequestBuddyPage">
+          <BoltIcon className={classes.listItemIcon} />
+          <ListItemText primary="Request" primaryTypographyProps={{ style: { color: '#9D9D9D' } }} />
+        </ListItem>
+        {/* Matches */}
+        <ListItem button component={Link} to="/ViewMatches">
+          <FavoriteIcon className={classes.listItemIcon} />
+          <ListItemText primary="Matches" primaryTypographyProps={{ style: { color: '#9D9D9D' } }} />
+        </ListItem>
       </List>
-      
+      {/* Account icon */}
       <div className={classes.accountIcon}>
         <AccountCircleIcon style={{ fontSize: '5rem' }} />
       </div>
     </Drawer>
+    </BrowserRouter>
   );
 }
