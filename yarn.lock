@@ -191,6 +191,11 @@
   "resolved" "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.1.tgz"
   "version" "0.2.1"
 
+"@fontsource/roboto@^5.0.8":
+  "integrity" "sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA=="
+  "resolved" "https://registry.npmjs.org/@fontsource/roboto/-/roboto-5.0.8.tgz"
+  "version" "5.0.8"
+
 "@mui/base@5.0.0-beta.36":
   "integrity" "sha512-6A8fYiXgjqTO6pgj31Hc8wm1M3rFYCxDRh09dBVk0L0W4cb2lnurRJa3cAyic6hHY+we1S58OdGYRbKmOsDpGQ=="
   "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-beta.36.tgz"
