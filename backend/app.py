@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request, jsonify
 from pymongo import MongoClient
 from flask_cors import CORS, cross_origin
 import json
@@ -13,22 +13,16 @@ mongoClient = MongoClient(
     "mongodb+srv://turner:ellehacks@ellehacks.m6eghqr.mongodb.net/"
 )
 db = mongoClient.get_database("unifyDB")
-names_col = db.get_collection("users")
+collection = db.get_collection("users")
 
 
-@app.route("/addname/<name>/")
-def addname(name):
-    names_col.insert_one({"name": name.lower()})
-    return redirect(url_for("getnames"))
-
-
-@app.route("/getnames/")
-def getnames():
-    names_json = []
-    if names_col.find({}):
-        for name in names_col.find({}).sort("name"):
-            names_json.append({"name": name["name"], "id": str(name["_id"])})
-    return json.dumps(names_json)
+# Route to handle signup
+@app.route("/signup", methods=["POST"])
+def signup():
+    data = request.json  # Get the JSON data from the request body
+    # Insert the user data into the users collection
+    collection.insert_one(data)
+    return jsonify({"message": "Data added to MongoDB"})  # Return JSON response
 
 
 if __name__ == "__main__":
