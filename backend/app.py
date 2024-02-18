@@ -115,5 +115,20 @@ def submit_request():
     return jsonify({"message": "Request submitted successfully"}), 200
 
 
+@app.route("/getMatches")
+def getMatchingRequests(userID):
+    currentUser = db.users.findOneById(userID)
+    userProgram = currentUser['program']
+    userCourses = currentUser['courses']
+
+    requests = db.requests.find()
+    matchingRequests = []
+    for req in requests:
+        if req['program'] == userProgram and set(req['courses']) == set(courses):
+            matchingRequests.append(req)
+
+    return matchingRequests
+
+
 if __name__ == "__main__":
     app.run(debug=True)
