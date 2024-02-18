@@ -5,6 +5,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home'; 
 import RequestBuddyPage from './components/RequestBuddyPage'; 
+import ViewMatches from './components/ViewMatches'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import BrowserRouter, Routes, and Route
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -42,6 +44,7 @@ class App extends Component {
             <Route path="/login" element={<Login />} /> 
             <Route path="/home" element={<Home />} />
             <Route path="/request" element={<RequestBuddyPage />} />
+            <Route path="/viewmatches" element={<ViewMatches />} />
             </Routes>
           </BrowserRouter>
         </header>
