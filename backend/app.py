@@ -118,13 +118,13 @@ def submit_request():
 @app.route("/getMatches")
 def getMatchingRequests(userID):
     currentUser = db.users.findOneById(userID)
-    userProgram = currentUser['program']
-    userCourses = currentUser['courses']
+    userProgram = currentUser["program"]
+    userCourses = currentUser["courses"]
 
     requests = db.requests.find()
     matchingRequests = []
     for req in requests:
-        if req['program'] == userProgram and set(req['courses']) == set(courses):
+        if req["program"] == userProgram and set(req["courses"]) == set(courses):
             matchingRequests.append(req)
 
     return matchingRequests
